@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class HeaderInformation extends React.Component {
@@ -45,16 +44,31 @@ class Form extends React.Component {
 
     renderForm() {
         if (this.state.editState) {
+
             return (<form onSubmit={this.updateRecord.bind(this)}>
-                Name: <input type="text" name="name" className="name" defaultValue={this.state.name}/> <br/>
-                Address: <input type="text" name="address" className="address" defaultValue={this.state.address}/> <br/>
-                <button variant="success" className="update-add-item">Update</button>
+                <label>
+                    Name: <input type="text" name="name" className="name" defaultValue={this.state.name}/>
+                </label>
+                <label>
+                    Address: <input type="text" name="address" className="address" defaultValue={this.state.address}/>
+                </label>
+                <input type="submit" className="update-add-item" value="Update"/>
             </form>);
         } else {
             return (<form onSubmit={this.onSubmitHandle.bind(this)}>
-                Name: <input type="text" name="name" className="name"/> <br/>
-                Address: <input type="text" name="address" className="address"/><br/>
-                <button variant="success" className="btn-add-item">Add</button>
+                <label>
+                    Name:
+                </label>
+                <label>
+                    <input type="text" name="name" className="name"/>
+                </label>
+                <label>
+                    Address:
+                </label>
+                <label>
+                    <input type="text" name="address" className="address"/>
+                </label>
+                <input type="submit" className="btn-add-record" value="Add"/>
             </form>);
         }
     }
@@ -111,13 +125,13 @@ class Form extends React.Component {
             <div>
                 <HeaderInformation/>
                 {this.renderForm()}
-                <p>
-                    <table>
-                        <tbody>
-                        {this.renderTableData()}
-                        </tbody>
-                    </table>
-                </p>
+
+                <table>
+                    <tbody>
+                    {this.renderTableData()}
+                    </tbody>
+                </table>
+
             </div>
         );
     }
